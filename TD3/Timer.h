@@ -19,12 +19,13 @@ class Timer
 	protected :
 		timer_t tid;
 		virtual void callback() = 0;
-
-	private :
-		static void call_callback (int sig, siginfo_t* si, void* user);
 		struct sigaction sa;
 		struct sigevent sev;
 		itimerspec its;
-}
+
+	private :
+		static void call_callback (int sig, siginfo_t* si, void* user);
+
+};
 
 #endif
