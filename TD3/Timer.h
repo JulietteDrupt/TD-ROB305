@@ -3,7 +3,6 @@
 
 #include <time.h>
 #include <signal.h>
-#include <time.h>
 
 class Timer
 {
@@ -21,7 +20,6 @@ class Timer
 		virtual void callback() = 0;
 		struct sigaction sa;
 		struct sigevent sev;
-		itimerspec its;
 
 	private :
 		static void call_callback (int sig, siginfo_t* si, void* user);

@@ -9,9 +9,11 @@ void PeriodicTimer::start(double duration_ms)
 
 	cout << "Starting timer" << endl;
 
-	(this -> its).it_value = timespec_from_ms(duration_ms);
-	(this -> its).it_interval = timespec_from_ms(duration_ms);
-	timer_settime(this -> tid, 0, &(this -> its), NULL);
+	itimerspec its;
+	its.it_value = timespec_from_ms(duration_ms);
+	its.it_interval = timespec_from_ms(duration_ms);;
+
+	timer_settime(this -> tid, 0, &its, NULL);
 
 }
 

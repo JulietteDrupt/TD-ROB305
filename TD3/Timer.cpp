@@ -9,13 +9,13 @@ Timer::Timer()
 	cout << "Instanciating timer" << endl;
 	
 	(this -> sa).sa_flags = SA_SIGINFO;
-	(this -> sa).sa_sigaction = this -> call_callback;
+	(this -> sa).sa_sigaction = Timer::call_callback;
 	sigemptyset(&(this -> sa).sa_mask);
 	sigaction(SIGRTMIN, &(this -> sa), NULL);
 
 	(this -> sev).sigev_notify = SIGEV_SIGNAL;
-	(this -> sev).sigev_notify = SIGRTMIN;
-	(this -> sev).sigev_value.sival_ptr = (void*) this;
+	(this -> sev).sigev_signo = SIGRTMIN;
+	(this -> sev).sigev_value.sival_ptr = this;
 
 	timer_create(CLOCK_REALTIME, &(this -> sev), &(this -> tid));	
 }
@@ -29,26 +29,26 @@ Timer::~Timer()
 void Timer::start (double duration_ms)
 {
 
+	itimerspec its;
+	its.it_value = timespec_from_ms(duration_ms);
+	its.it_interval.tv_sec = 0;
+	its.it_interval.tv_nsec = 0;
 
-	(this -> its).it_value = timespec_from_ms(duration_ms);
-	(this -> its).it_interval.tv_sec = 0;
-	(this -> its).it_interval.tv_nsec = 0;
-
-	timer_settime(this -> tid, 0, &(this -> its), NULL);
+	timer_settime(this -> tid, 0, &its, NULL);
 
 }
 
 void Timer::stop ()
 {
 
-	this -> callback();
 	cout << "Stopping timer" << endl;
 
-	(this -> its).it_value = timespec_from_ms(0.0);
-	(this -> its).it_interval.tv_sec = 0;
-	(this -> its).it_interval.tv_nsec = 0;
+	itimerspec its;
+	its.it_value = timespec_from_ms(0.0);
+	its.it_interval.tv_sec = 0;
+	its.it_interval.tv_nsec = 0;
 
-	timer_settime(this -> tid, 0, &(this -> its), NULL);
+	timer_settime(this -> tid, 0, &its, NULL);
 }
 
 void Timer::call_callback (int sig, siginfo_t* si, void* user)
