@@ -10,7 +10,7 @@ int main()
 	{
 		continue;
 	}
-	//cd.stop();
+	cd.stop();
 	
 
 	return 0;
