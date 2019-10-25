@@ -8,20 +8,20 @@ using namespace std;
 
 unsigned incr(unsigned int nLoops, double* pCounter, volatile bool* pStop)
 {
-	unsigned int i = 0;
-	while (i < nLoops && not *pStop)
+	unsigned int iLoop = 0;
+	while (iLoop < nLoops && not *pStop)
 	{
 		*pCounter += 1.0;
-		i++;
+		iLoop++;
 	cout << *pCounter << endl;
 	}
-	return i;
+	return iLoop;
 }
 
 
 void myHandler(int sig, siginfo_t* si, void*)
 {
-	cout << "je suis dans le handler" << endl;
+	//cout << "je suis dans le handler" << endl;
 	*((bool*)(si->si_value.sival_ptr)) = true;
 }
 
