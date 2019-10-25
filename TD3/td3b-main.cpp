@@ -1,12 +1,15 @@
 #include "TimeSpec.h"
 #include "CountDown.h"
+#include <iostream>
+using namespace std;
 
 int main()
 {
-	double duration = 32;
-	CountDown cd;
-	cd.start(duration);
-	for (int i = 0; i<3000; i++)
+	double duration = 1000;
+	CountDown cd(5);
+
+	cd.start(duration); 
+	while (cd.n >= 0)
 	{
 		continue;
 	}

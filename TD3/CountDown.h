@@ -5,6 +5,9 @@
 
 class CountDown : public PeriodicTimer
 {
+	public :
+		CountDown(int n);
+		volatile int n;
 
 	protected :
 		void callback();

@@ -4,9 +4,14 @@
 #include <iostream>
 using namespace std;
 
+CountDown::CountDown(int n) : PeriodicTimer()
+{
+	this -> n = n;
+}
 
 void CountDown::callback()
 {
-	cout << "coucou" << endl;
+	cout << this -> n << endl;
+	(this -> n)--;
 }
 

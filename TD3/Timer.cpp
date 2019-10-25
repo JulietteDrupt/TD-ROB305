@@ -53,7 +53,6 @@ void Timer::stop ()
 
 void Timer::call_callback (int sig, siginfo_t* si, void* user)
 {
-	cout << "In the call callback" << endl;
 	Timer *timer = ((Timer *) si->si_value.sival_ptr) ;
 	timer -> callback();
 }
