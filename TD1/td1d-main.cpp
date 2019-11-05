@@ -13,7 +13,7 @@ unsigned incr(unsigned int nLoops, double* pCounter, volatile bool* pStop)
 	{
 		*pCounter += 1.0;
 		iLoop++;
-	cout << *pCounter << endl;
+	//cout << *pCounter << endl;
 	}
 	return iLoop;
 }
@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
 	
 	
 	timespec time_begin = timespec_now();
-	incr(nLoops, &counter, &stop);
+	int iLoop = incr(nLoops, &counter, &stop);
 	timespec time_end = timespec_now();
 
 	timer_delete(tid);
@@ -67,6 +67,7 @@ int main(int argc, char* argv[])
 	timespec duration_ts = time_end - time_begin;
 	double duration_s = timespec_to_ms(duration_ts) / 1e3;
 	cout << "Duration : " << duration_s << " s" << endl;
+	cout << "Number of loops executed : " << iLoop << endl;
 	
 	return 0;
 }
