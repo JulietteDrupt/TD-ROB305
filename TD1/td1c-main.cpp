@@ -10,7 +10,6 @@ void incr(unsigned int nLoops, volatile double* pCounter)
 	{
 		*pCounter += 1.0;
 	}
-	cout << *pCounter << endl;
 }
 
 int main(int argc, char* argv[])
@@ -24,8 +23,9 @@ int main(int argc, char* argv[])
 
 	timespec duration_ts = time_end - time_begin;
 	double duration_s = timespec_to_ms(duration_ts) / 1e3;
+	cout << "Counter: " << counter << endl;
 	cout << "Duration : " << duration_s << " s" << endl;
-	cout << counter << endl;
+
 	
 	return 0;
 }

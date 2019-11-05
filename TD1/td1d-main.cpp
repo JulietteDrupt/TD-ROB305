@@ -26,6 +26,7 @@ void myHandler(int sig, siginfo_t* si, void*)
 }
 
 
+
 int main(int argc, char* argv[])
 {
 	volatile bool stop = false;
