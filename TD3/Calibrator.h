@@ -2,6 +2,7 @@
 #define CALIBRATOR_H
 
 #include "PeriodicTimer.h"
+#include "Looper.h"
 
 class Calibrator : public PeriodicTimer
 {
@@ -10,13 +11,15 @@ class Calibrator : public PeriodicTimer
 		double nLoops(double duration);
 		int getA();
 		int getB();
+		Looper looper;
 
 	protected :
 		void callback();
 
 	private :
 		double a;
-		double b;	
+		double b;
+		std::vector<double> samples;
 };
 
 #endif
