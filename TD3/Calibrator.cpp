@@ -23,10 +23,10 @@ Calibrator::Calibrator(double samplingPeriod_ms, unsigned int nSamples) : Period
 
 	// Régression linéaire :
 
-	double sumx = (double) nSamples * (nSamples + 1) / 2 * samplingPeriod_ms ;
-	double sumy=0;
-	double sumxx = (double) nSamples * (nSamples + 1) * (2 * nSamples + 1) / 6 * samplingPeriod_ms * samplingPeriod_ms ;
-	double sumxy = 0;
+	long double sumx = nSamples * (nSamples + 1) / 2 * samplingPeriod_ms ;
+	long double sumy=0;
+	long double sumxx = nSamples * (nSamples + 1) * (2 * nSamples + 1) / 6 * samplingPeriod_ms * samplingPeriod_ms ;
+	long double sumxy = 0;
 
 	for (int i=0; i< nSamples; i++)
 	{
@@ -34,12 +34,12 @@ Calibrator::Calibrator(double samplingPeriod_ms, unsigned int nSamples) : Period
 		sumxy += this -> samples[i] * (i + 1) * samplingPeriod_ms;
 	}
 
-	this -> b = (double) (nSamples * sumxy - sumx * sumy) / (nSamples * sumxx - sumx * sumx);
-	this -> a = sumy / nSamples - (this -> b) * sumx / nSamples;
+	this -> a = (double) (nSamples * sumxy - sumx * sumy) / (nSamples * sumxx - sumx * sumx);
+	this -> b = (double) sumy / nSamples - (this -> a) * sumx / nSamples;
 
-	cout << "a = " << a << endl;
-	cout << "b = " << b << endl;
-	//cout << "test : " << a * samplingPeriod_ms + b << endl;
+	cout << "a = " << this -> a << endl;
+	cout << "b = " << this -> b << endl;
+	cout << "test : " << this -> a * samplingPeriod_ms + this -> b << endl;
 }
 
 void Calibrator::callback()

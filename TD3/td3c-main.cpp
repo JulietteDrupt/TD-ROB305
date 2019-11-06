@@ -2,7 +2,7 @@
 
 int main()
 {
-	Calibrator calib = Calibrator(1000.0,2);
+	Calibrator calib = Calibrator(100.0,4);
 
 	return 0;
 }
