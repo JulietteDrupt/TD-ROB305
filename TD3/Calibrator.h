@@ -13,6 +13,8 @@ class Calibrator : public PeriodicTimer
 		int getA();
 		int getB();
 		Looper looper;
+		unsigned int nSamples;
+		
 
 	protected :
 		void callback();

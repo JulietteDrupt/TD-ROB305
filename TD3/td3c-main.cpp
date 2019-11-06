@@ -1,7 +1,9 @@
-#include "Looper.h"
+#include "Calibrator.h"
 
 int main()
 {
-	Looper looper;
+	Calibrator calib = Calibrator(1000.0,2);
+
+	return 0;
 }
 
