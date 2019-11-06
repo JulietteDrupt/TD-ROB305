@@ -1,5 +1,7 @@
 #ifndef LOOPER_H
 #define LOOPER_H
+#include <cfloat>
+#include <limits>
 
 class Looper
 {

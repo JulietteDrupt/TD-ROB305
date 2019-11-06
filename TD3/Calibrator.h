@@ -3,6 +3,7 @@
 
 #include "PeriodicTimer.h"
 #include "Looper.h"
+#include <vector>
 
 class Calibrator : public PeriodicTimer
 {

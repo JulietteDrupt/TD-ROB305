@@ -1,5 +1,6 @@
 #include "Looper.h"
-#include <climits>
+#include <cfloat>
+#include <limits>
 
 double Looper::runLoop(double nLoops=DBL_MAX)
 {
