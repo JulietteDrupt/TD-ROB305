@@ -39,7 +39,7 @@ Calibrator::Calibrator(double samplingPeriod_ms, unsigned int nSamples) : Period
 
 	cout << "a = " << this -> a << endl;
 	cout << "b = " << this -> b << endl;
-	cout << "test : " << this -> a * samplingPeriod_ms + this -> b << endl;
+	cout << "test : " << this -> nLoops(samplingPeriod_ms) << endl;
 }
 
 void Calibrator::callback()
@@ -52,5 +52,20 @@ void Calibrator::callback()
 	{
 		(this -> looper).stopLoop();
 	}
+}
+
+int Calibrator::getA()
+{
+	return this -> a;
+}
+
+int Calibrator::getB()
+{
+	return this -> b;
+}
+
+double Calibrator::nLoops(double duration_ms)
+{
+	return ((this -> a) * duration_ms + (this -> b));
 }
 
