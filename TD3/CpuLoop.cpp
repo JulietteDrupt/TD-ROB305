@@ -1,11 +1,15 @@
 #include "CpuLoop.h"
 #include "Looper.h"
 #include "Calibrator.h"
+#include <iostream>
+using namespace std;
 
 CpuLoop::CpuLoop(Calibrator &calibrator) : Looper(), calibrator(calibrator){}
 
-void runTime(double duration_ms)
+void CpuLoop::runTime(double duration_ms)
 {
-	int i = 1;
+	double n = (this -> calibrator).nLoops(duration_ms);
+	double nl = this -> runLoop(n);
+	cout << nl << endl;
 }
 
