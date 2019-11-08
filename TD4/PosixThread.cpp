@@ -10,6 +10,7 @@ PosixThread::PosixThread()
 	// Initialize Posix attribute
 	pthread_attr_init(&(this -> posixAttr));
 	pthread_attr_setinheritsched(&(this -> posixAttr), PTHREAD_EXPLICIT_SCHED);
+	this -> isActive = false;
 }
 
 
@@ -23,6 +24,7 @@ PosixThread::PosixThread(pthread_t posixId)
 	if (test != ESRCH)
 	{
 		this -> posixId = posixId;
+		this -> isActive = true;
 	}
 }
 
@@ -36,7 +38,6 @@ PosixThread::~PosixThread()
 
 bool PosixThread::setScheduling(int schedPolicy, int priority)
 {
-	bool active = this -> isActive();
 
 	// Set policy
 	pthread_attr_setschedpolicy(&(this -> posixAttr), schedPolicy);
@@ -46,22 +47,21 @@ bool PosixThread::setScheduling(int schedPolicy, int priority)
 	pthread_attr_setschedparam(&(this -> posixAttr), &schedParams);
 
 	// Si le thread est déjà lancé, on va devoir modifier les params direct ds le thread avec pthread_setschedparam()
-	if (active)
+	if (isActive)
 	{
 		pthread_setschedparam(this -> posixId, schedPolicy, &schedParams);
 	}
 
-	return active;
+	return isActive;
 }
 
 bool PosixThread::getScheduling(int* p_schedPolicy, int* p_priority)
 {
-	bool active = this -> isActive();
 
 	sched_param schedParams;
 
 	// Si le thread est déjà lancé, on récupère ses paramètres directement
-	if (active)
+	if (isActive)
 	{
 		pthread_getschedparam(this -> posixId, p_schedPolicy, &schedParams);
 	}
@@ -72,13 +72,14 @@ bool PosixThread::getScheduling(int* p_schedPolicy, int* p_priority)
 	}
 	*p_priority = schedParams.sched_priority;
 
-	return active;
+	return isActive;
 }
 
-bool PosixThread::isActive()
+/*
+
+void PosixThread::start(void* (*threadFunc)(void*), void* threadArg)
 {
-	sched_param schedParams;
-	int* p_schedPolicy;
-	return (pthread_getschedparam(this -> posixId, p_schedPolicy, &schedParams) == 0);	
-}
+	pthread_create(&(this -> posixId), );
+}*/
+
 

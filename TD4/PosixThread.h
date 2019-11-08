@@ -18,10 +18,10 @@ class PosixThread
 		bool setScheduling(int schedPolicy, int priority);
 		bool getScheduling(int* p_schedPolicy = nullptr, int* p_priority = nullptr);
 
-		bool isActive();
-
 		class Exception;
-		
+
+	protected :
+		bool isActive;		
 
 	private :
 		pthread_t posixId;
