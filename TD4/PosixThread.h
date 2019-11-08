@@ -9,7 +9,7 @@ class PosixThread
 {
 	public :
 		PosixThread();
-		PosixThead(pthread_t posixId);
+		PosixThread(pthread_t posixId);
 		~PosixThread();
 
 		void start(void* (*threadFunc)(void*), void* threadArg);
