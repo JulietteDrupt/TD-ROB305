@@ -1,4 +1,5 @@
 #include "PosixThread.h"
+#include <pthread.h>
 #include <signal.h>
 #include <iostream>
 using namespace std;
@@ -75,11 +76,18 @@ bool PosixThread::getScheduling(int* p_schedPolicy, int* p_priority)
 	return isActive;
 }
 
-/*
+
 
 void PosixThread::start(void* (*threadFunc)(void*), void* threadArg)
 {
-	pthread_create(&(this -> posixId), );
-}*/
+	volatile bool stop = false;
+	pthread_create(&(this -> posixId), &(this -> posixAttr), threadFunc, (void*)&stop);
+	stop = true;
+}
+
+void PosixThread::join()
+{
+	pthread_join(this -> posixId, NULL);
+}
 
 
