@@ -23,6 +23,7 @@ class Thread : public PosixThread
 		static void* call_run(void* v_thread);
 		timespec startTime;
 		timespec stopTime;
+		pthread_attr_t posixAttr;
 };
 
 #endif

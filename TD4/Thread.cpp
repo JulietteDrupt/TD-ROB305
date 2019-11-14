@@ -7,14 +7,13 @@ Thread::Thread() : PosixThread()
 
 Thread::~Thread()
 {
-	cout << "Destructing Thread" << endl;
 	pthread_attr_destroy(&(this -> posixAttr));
 }
 
 void Thread::start()
 {
 	this -> startTime = timespec_now();
-	PosixThread::start(Thread -> call_run, (void*) this);
+	PosixThread::start(this -> call_run, (void*) this);
 	this -> sleep_ms(3e3);
 	this -> stopTime = timespec_now();
 }

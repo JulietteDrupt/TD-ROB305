@@ -1,11 +1,11 @@
-#include "PosixThread.h"
+#include "IncrementThread.h"
 #include <signal.h>
 #include <iostream>
 using namespace std;
 
 int main()
 {
-	PosixThread pt = PosixThread();
+	IncrementThread inct = IncrementThread();
 	return 0;
 }
 
