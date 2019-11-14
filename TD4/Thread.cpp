@@ -1,5 +1,7 @@
 #include "Thread.h"
 #include "TimeSpec.h"
+#include <iostream>
+using namespace std;
 
 Thread::Thread() : PosixThread()
 {}
@@ -12,9 +14,13 @@ Thread::~Thread()
 
 void Thread::start()
 {
+	cout << "timespec now" << endl;
 	this -> startTime = timespec_now();
+	cout << "start PosixThread" << endl;
 	PosixThread::start(this -> call_run, (void*) this);
-	this -> sleep_ms(3e3);
+	//cout << "sleep" << endl;
+	//this -> sleep_ms(3000.0);
+	//cout << "slept";
 	this -> stopTime = timespec_now();
 }
 
@@ -27,7 +33,9 @@ void* Thread::call_run(void* v_thread)
 
 void Thread::sleep_ms(double delay_ms)
 {
-	timespec_wait(timespec_from_ms(delay_ms));
+	timespec delay_ts = timespec_from_ms(delay_ms);
+	timespec_wait(delay_ts);
+	cout << "sleeping ?" << endl;
 }
 
 
