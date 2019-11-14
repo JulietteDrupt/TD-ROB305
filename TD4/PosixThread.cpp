@@ -1,5 +1,5 @@
 #include "PosixThread.h"
-#include "TimeSpec.h"
+#include "../TimeSpec.h"
 #include <pthread.h>
 #include <signal.h>
 #include <time.h>

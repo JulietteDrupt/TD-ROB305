@@ -1,5 +1,5 @@
 #include "CountDown.h"
-#include "TimeSpec.h"
+#include "../TimeSpec.h"
 #include <signal.h>
 #include <iostream>
 using namespace std;

@@ -1,5 +1,5 @@
 #include "Chrono.h"
-#include "TimeSpec.h"
+#include "../TimeSpec.h"
 #include <time.h>
 
 Chrono::Chrono()

@@ -1,5 +1,5 @@
 #include "Thread.h"
-#include "TimeSpec.h"
+#include "../TimeSpec.h"
 #include <time.h>
 #include <iostream>
 using namespace std;

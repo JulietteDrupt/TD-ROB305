@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <pthread.h>
-#include "TimeSpec.h"
+#include "../TimeSpec.h"
 using namespace std;
 
 

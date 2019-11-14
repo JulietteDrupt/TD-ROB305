@@ -1,7 +1,7 @@
 #include <time.h>
 #include <iostream>
 #include <string>
-#include "TimeSpec.h"
+#include "../TimeSpec.h"
 using namespace std;
 
 void incr(unsigned int nLoops, volatile double* pCounter)

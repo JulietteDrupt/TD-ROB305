@@ -3,7 +3,7 @@
 #include <string>
 #include <climits>
 #include <signal.h>
-#include "TimeSpec.h"
+#include "../TimeSpec.h"
 using namespace std;
 
 unsigned incr(unsigned int nLoops, double* pCounter, volatile bool* pStop)
