@@ -1,5 +1,7 @@
 #include "PosixThread.h"
 #include <signal.h>
+#include <iostream>
+using namespace std;
 
 int main()
 {

@@ -26,7 +26,7 @@ class PosixThread
 	private :
 		pthread_t posixId;
 		pthread_attr_t posixAttr;
-		
+
 };
 
 class PosixThread::Exception
