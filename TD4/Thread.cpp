@@ -1,5 +1,6 @@
 #include "Thread.h"
 #include "TimeSpec.h"
+#include <time.h>
 #include <iostream>
 using namespace std;
 
@@ -33,6 +34,7 @@ void* Thread::call_run(void* v_thread)
 
 void Thread::sleep_ms(double delay_ms)
 {
+//Problème avec la fonction wait de TimeSpec : pk ?
 	timespec delay_ts = timespec_from_ms(delay_ms);
 	timespec_wait(delay_ts);
 	cout << "sleeping ?" << endl;
