@@ -1,6 +1,8 @@
 #include "PosixThread.h"
+#include "TimeSpec.h"
 #include <pthread.h>
 #include <signal.h>
+#include <time.h>
 #include <iostream>
 using namespace std;
 
@@ -88,6 +90,12 @@ void PosixThread::start(void* (*threadFunc)(void*), void* threadArg)
 void PosixThread::join()
 {
 	pthread_join(this -> posixId, NULL);
+}
+
+bool PosixThread::join(double timeout_ms)
+{
+	timespec t = timespec_from_ms(timeout_ms);
+	return pthread_timedjoin_np((this -> posixId), NULL, &t);
 }
 
 
