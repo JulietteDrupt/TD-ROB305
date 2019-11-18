@@ -1,5 +1,6 @@
 #include "IncrementThread.h"
 #include <signal.h>
+#include "../TimeSpec.h"
 #include <iostream>
 using namespace std;
 

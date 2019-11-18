@@ -21,7 +21,7 @@ void Thread::start()
 	cout << "start PosixThread" << endl;
 	PosixThread::start(this -> call_run, (void*) this);
 	//cout << "sleep" << endl;
-	//Thread::sleep_ms(3000.0);
+	Thread::sleep_ms(3000.0);
 	//cout << "slept";
 	this -> stopTime = timespec_now();
 }
@@ -30,6 +30,7 @@ void* Thread::call_run(void* v_thread)
 {
 	Thread *t = (Thread *) v_thread;
 	t -> run();
+	return v_thread;
 }
 
 
@@ -37,7 +38,7 @@ void Thread::sleep_ms(double delay_ms)
 {
 //Problème avec la fonction wait de TimeSpec : pk ?
 	timespec delay_ts = timespec_from_ms(delay_ms);
-	timespec test = timespec_wait(delay_ts);
+	timespec_wait(delay_ts);
 
 	cout << "sleeping ?" << endl;
 }

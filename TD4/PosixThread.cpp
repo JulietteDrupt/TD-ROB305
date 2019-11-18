@@ -22,8 +22,8 @@ PosixThread::PosixThread(pthread_t posixId)
 	cout << "Creating PosixThread" << endl;
 
 	sched_param schedParams;
-	int* p_schedPolicy;
-	int test = (pthread_getschedparam(this -> posixId, p_schedPolicy, &schedParams) == 0);
+	int p_schedPolicy = SCHED_RR;
+	int test = (pthread_getschedparam(this -> posixId, &p_schedPolicy, &schedParams) == 0);
 	if (test != ESRCH)
 	{
 		this -> posixId = posixId;
@@ -82,9 +82,7 @@ bool PosixThread::getScheduling(int* p_schedPolicy, int* p_priority)
 
 void PosixThread::start(void* (*threadFunc)(void*), void* threadArg)
 {
-	volatile bool stop = false;
-	pthread_create(&(this -> posixId), &(this -> posixAttr), threadFunc, (void*)&stop);
-	stop = true;
+	pthread_create(&(this -> posixId), &(this -> posixAttr), threadFunc, threadArg);
 }
 
 void PosixThread::join()
