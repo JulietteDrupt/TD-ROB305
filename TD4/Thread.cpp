@@ -20,9 +20,9 @@ void Thread::start()
 	this -> startTime = timespec_now();
 	cout << "start PosixThread" << endl;
 	PosixThread::start(this -> call_run, (void*) this);
-	cout << "sleep" << endl;
-	this -> sleep_ms(3000.0);
-	cout << "slept";
+	//cout << "sleep" << endl;
+	//Thread::sleep_ms(3000.0);
+	//cout << "slept";
 	this -> stopTime = timespec_now();
 }
 
