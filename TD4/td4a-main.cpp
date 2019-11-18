@@ -7,6 +7,7 @@ int main()
 {
 	IncrementThread inct = IncrementThread();
 	inct.start();
+	//inct.join();
 	return 0;
 }
 
