@@ -2,6 +2,9 @@
 #include <iostream>
 using namespace std;
 
+IncrementThread::IncrementThread() : Thread()
+{}
+
 IncrementThread::IncrementThread(Data data) : Thread()
 {
 	this -> data = data;
