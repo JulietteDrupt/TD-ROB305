@@ -28,6 +28,7 @@ void* Thread::call_run(void* v_thread)
 {
 	Thread *t = (Thread *) v_thread;
 	t -> run();
+
 	return v_thread;
 }
 
