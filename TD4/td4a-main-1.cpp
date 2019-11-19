@@ -1,9 +1,11 @@
 #include "IncrementThread.h"
-#include "Thread.h"
 #include <signal.h>
-#include "../TimeSpec.h"
 #include <iostream>
 using namespace std;
+
+/*
+This program reproduces TD2a with an object-oriented architecture.
+*/
 
 int main(int argc, char* argv[])
 {

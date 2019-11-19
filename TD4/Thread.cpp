@@ -10,9 +10,7 @@ Thread::Thread() : PosixThread()
 
 
 Thread::~Thread()
-{
-	pthread_attr_destroy(&(this -> posixAttr));
-}
+{}
 
 void Thread::start()
 {
