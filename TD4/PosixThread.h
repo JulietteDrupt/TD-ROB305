@@ -2,6 +2,8 @@
 #define PPSIX_THREAD_H
 
 #include <signal.h>
+#include <exception>
+#include <string>
 #include <iostream>
 using namespace std;
 
@@ -29,7 +31,17 @@ class PosixThread
 
 };
 
-class PosixThread::Exception
-{};
+class PosixThread::Exception : public exception
+{
+	public :
+		Exception(const string& msg);
+		const char* what() const noexcept override
+		{
+			return _msg.c_str();
+		};
+	private :
+		string _msg;
+		
+};
 
 #endif

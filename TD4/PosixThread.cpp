@@ -19,15 +19,22 @@ PosixThread::PosixThread()
 
 PosixThread::PosixThread(pthread_t posixId)
 {
-	cout << "Creating PosixThread" << endl;
-
-	sched_param schedParams;
-	int p_schedPolicy = SCHED_RR;
-	int test = (pthread_getschedparam(this -> posixId, &p_schedPolicy, &schedParams) == 0);
-	if (test != ESRCH)
+	if (posixId != '\0')
 	{
-		this -> posixId = posixId;
-		this -> isActive = true;
+		cout << "Creating PosixThread" << endl;
+
+		sched_param schedParams;
+		int p_schedPolicy = SCHED_RR;
+		int test = (pthread_getschedparam(this -> posixId, &p_schedPolicy, &schedParams) == 0);
+		if (test != ESRCH)
+		{
+			this -> posixId = posixId;
+			this -> isActive = true;
+		}
+	}
+	else
+	{
+		throw(Exception("pb"));
 	}
 }
 
@@ -96,4 +103,8 @@ bool PosixThread::join(double timeout_ms)
 	return pthread_timedjoin_np((this -> posixId), NULL, &t);
 }
 
+PosixThread::Exception::Exception(const string& msg)
+{
+	this -> _msg = msg;
+}
 
