@@ -2,12 +2,16 @@
 #include <iostream>
 using namespace std;
 
-IncrementThread::IncrementThread() : Thread()
-{}
+IncrementThread::IncrementThread(Data data) : Thread()
+{
+	this -> data = data;
+}
 
 void IncrementThread::run()
 {
-	int i = 1;
-	cout << "ok" << endl;
+	for (unsigned i=0; i < (this -> data).nLoops; i++)
+	{
+		(this -> data).counter += 1.0;
+	}
 }
 

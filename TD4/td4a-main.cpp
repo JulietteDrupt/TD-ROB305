@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
 
 	for (unsigned int i=0; i<nTasks; i++)
 	{
-		incThreads[i] = new IncrementThread();
+		incThreads[i] = new IncrementThread(data);
 	}
 
 	for (unsigned int i=0; i<nTasks; i++)
@@ -26,6 +26,11 @@ int main(int argc, char* argv[])
 	for (unsigned int i=0; i<nTasks; i++)
 	{
 		incThreads[i] -> join();
+	}
+
+	for (unsigned int i=0; i<nTasks; i++)
+	{
+		cout << (incThreads[i] -> data).counter << endl;
 	}
 
 	return 0;

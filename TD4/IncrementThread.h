@@ -8,7 +8,7 @@
 class IncrementThread : public Thread
 {
 	public :
-		IncrementThread();
+		IncrementThread(Data data);
 		Data data;
 
 	protected :
