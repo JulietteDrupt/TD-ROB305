@@ -16,12 +16,12 @@ Thread::~Thread()
 
 void Thread::start()
 {
-	cout << "timespec now" << endl;
+	//cout << "timespec now" << endl;
 	this -> startTime = timespec_now();
-	cout << "start PosixThread" << endl;
+	//cout << "start PosixThread" << endl;
 	PosixThread::start(this -> call_run, (void*) this);
 	//cout << "sleep" << endl;
-	Thread::sleep_ms(300.0);
+	//Thread::sleep_ms(300.0);
 	//cout << "slept";
 	this -> stopTime = timespec_now();
 }
