@@ -37,6 +37,8 @@ int main()
 	cout << "Testing startTime, stopTime and esecTime" << endl;
 	cout << "startTime : " << inct -> startTime_ms() << " stopTime : " << inct -> stopTime_ms() << " execTime : " << inct -> execTime_ms() << endl;
 
+	
+
 /*
 Restent à tester :
 	- exception

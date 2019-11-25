@@ -1,5 +1,5 @@
 #ifndef POSIX_THREAD_H
-#define PPSIX_THREAD_H
+#define P0SIX_THREAD_H
 
 #include <signal.h>
 #include <exception>

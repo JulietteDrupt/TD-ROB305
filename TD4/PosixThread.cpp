@@ -43,7 +43,6 @@ PosixThread::~PosixThread()
 {
 	cout << "Destructing PosixThread" << endl;
 	pthread_attr_destroy(&(this -> posixAttr));
-	pthread_join(this->posixId,NULL);
 }
 
 
