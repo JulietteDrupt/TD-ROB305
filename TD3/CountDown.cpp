@@ -4,10 +4,8 @@
 #include <iostream>
 using namespace std;
 
-CountDown::CountDown(int n) : PeriodicTimer()
-{
-	this -> n = n;
-}
+CountDown::CountDown(int n) : PeriodicTimer(), n(n)
+{}
 
 void CountDown::callback()
 {

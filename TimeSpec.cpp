@@ -78,12 +78,13 @@ timespec timespec_subtract(const timespec& time1_ts, const timespec& time2_ts)
 
 timespec timespec_wait(const timespec& delay_ts)
 {
-	timespec time_ts_remaining;
+	struct timespec time_ts_remaining;
+	//cout << "Gonna wait" << endl;
 	int test = nanosleep(&delay_ts, &time_ts_remaining);
-	if (test == -1)
+	//cout << "Gonna wait" << endl;
+	while (test != 0)
 	{
-		cout << "Nanosleep failed." << endl;
-		return delay_ts;
+		test = nanosleep(&time_ts_remaining,&time_ts_remaining);
 	}
 	return time_ts_remaining;
 }

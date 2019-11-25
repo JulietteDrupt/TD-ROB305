@@ -34,7 +34,7 @@ class Mutex::Monitor
 		Monitor(Mutex& m);
 
 	private :
-		Mutex mutex;
+		Mutex& mutex;
 };
 
 class Mutex::Monitor::TimeoutException

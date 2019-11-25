@@ -2,12 +2,8 @@
 #include "../TimeSpec.h"
 #include <time.h>
 
-Chrono::Chrono()
-{
-	this -> startTime_ = timespec_now();
-	this -> stopTime_ = timespec_now();
-	this -> active = true;
-}
+Chrono::Chrono() : startTime(timespec_now()), stopTime(timespec_now()), active(true)
+{}
 
 void Chrono::stop()
 {
