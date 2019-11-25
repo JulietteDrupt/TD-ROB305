@@ -26,23 +26,16 @@ void Mutex::lock()
 bool Mutex::lock(double timeout_ms)
 {
 	timespec timeout_ts = timespec_from_ms(timeout_ms);
-	pthread_mutex_timedlock(&(this -> posixId), timeout_ts);
+	int val = pthread_mutex_timedlock(&(this -> posixId), timeout_ts);
 
-	return true;
+	return (val == 0);
 }
 
 
 bool Mutex::trylock()
 {
-	try
-	{
-		pthread_mutex_lock(&(this -> posixId));
-	} catch (Mutex::Monitor::TimeoutException e)
-	{
-		throw(e);
-		return false;
-	}
-	return true;
+	int val = pthread_mutex_trylock(&(this -> posixId));
+	return (val == 0);
 }
 
 void Mutex::unlock()
@@ -86,5 +79,39 @@ void Mutex::Monitor::notifyAll()
 {
 	pthread_cond_broadcast(&(this -> posixCondId));
 }
+
+
+Mutex::Lock::Lock(Mutex& m) : public Monitor(m)
+{
+	m -> lock();
+}
+
+Mutex::Lock::Lock(Mutex& m, double timeout_ms) : public Monitor(m)
+{
+
+	bool val = m -> lock(timeout_ms);
+	if (!val)
+	{
+		throw(TimeoutException);
+	}
+}
+
+
+Mutex::Lock::~Lock()
+{}
+
+
+Mutex::TryLock::TryLock(Mutex& m) : public Monitor(m)
+{
+	bool val = m -> trylock();
+	if (!val)
+	{
+		throw(TimeoutException);
+	}
+}
+
+
+Mutex::TryLock::~TryLock()
+{}
 
 
