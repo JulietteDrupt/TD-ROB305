@@ -5,6 +5,8 @@
 #include <iostream>
 using namespace std;
 
+bool Thread::started = false;
+
 Thread::Thread() : PosixThread()
 {}
 
@@ -12,16 +14,14 @@ Thread::Thread() : PosixThread()
 Thread::~Thread()
 {}
 
-void Thread::start()
+bool Thread::start()
 {
-	//cout << "timespec now" << endl;
+	bool s = this -> started;
 	this -> startTime = timespec_now();
-	//cout << "start PosixThread" << endl;
 	PosixThread::start(this -> call_run, (void*) this);
-	//cout << "sleep" << endl;
-	//Thread::sleep_ms(300.0);
-	//cout << "slept";
 	this -> stopTime = timespec_now();
+	this -> started = true;
+	return !s;
 }
 
 void* Thread::call_run(void* v_thread)

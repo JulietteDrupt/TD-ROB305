@@ -10,11 +10,12 @@ class Thread : public PosixThread
 	public :
 		Thread();
 		~Thread();
-		void start();
+		bool start();
 		static void sleep_ms(double delay_ms);
 		double startTime_ms();
 		double stopTime_ms();
 		double execTime_ms();
+		static bool started;
 
 	protected :
 		virtual void run() = 0;
