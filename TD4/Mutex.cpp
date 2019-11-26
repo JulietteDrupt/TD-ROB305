@@ -83,13 +83,17 @@ void Mutex::Monitor::notifyAll()
 Mutex::Lock::Lock(Mutex& m) : Mutex::Monitor(m)
 {
 	(this -> mutex).lock();
+	this -> wait();
+	(this -> mutex).unlock();
 }
 
 Mutex::Lock::Lock(Mutex& m, double timeout_ms) : Mutex::Monitor(m)
 {
 
-	bool val = (this -> mutex).lock(timeout_ms);
-	if (!val)
+	bool val1 = (this -> mutex).lock(timeout_ms);
+	bool val2 = this -> wait(timeout_ms);
+	(this -> mutex).unlock();
+	if (!(val1 && val2))
 	{
 		throw Mutex::Monitor::TimeoutException();
 	}
@@ -103,6 +107,8 @@ Mutex::Lock::~Lock()
 Mutex::TryLock::TryLock(Mutex& m) : Mutex::Monitor(m)
 {
 	bool val = (this -> mutex).trylock();
+	this -> wait();
+	(this -> mutex).unlock();
 	if (!val)
 	{
 		
