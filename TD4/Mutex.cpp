@@ -1,10 +1,10 @@
 #include "Mutex.h"
-#include "../Timespec.h"
+#include "../TimeSpec.h"
 #include <pthread.h>
 
 Mutex::Mutex()
 {
-	pthread_mutexattr_t mutexAttribute,
+	pthread_mutexattr_t mutexAttribute;
 	pthread_mutexattr_init(&mutexAttribute);
 	pthread_mutexattr_settype(&mutexAttribute, PTHREAD_MUTEX_RECURSIVE);
 	pthread_mutex_init(&(this -> posixId), &mutexAttribute);
@@ -26,7 +26,7 @@ void Mutex::lock()
 bool Mutex::lock(double timeout_ms)
 {
 	timespec timeout_ts = timespec_from_ms(timeout_ms);
-	int val = pthread_mutex_timedlock(&(this -> posixId), timeout_ts);
+	int val = pthread_mutex_timedlock(&(this -> posixId), &timeout_ts);
 
 	return (val == 0);
 }
@@ -46,13 +46,12 @@ void Mutex::unlock()
 
 
 Mutex::Monitor::Monitor(Mutex& m) : mutex(m){}
-{}
 
 void Mutex::Monitor::wait()
 {
 	while (true)
 	{
-		pthread_cond_wait(&(this -> posixCondId), &(this -> posixId));
+		pthread_cond_wait(&((this -> mutex).posixCondId), &((this -> mutex).posixId));
 	}
 }
 
@@ -63,7 +62,7 @@ bool Mutex::Monitor::wait(double timeout_ms)
 	timespec timeout_ts = timespec_from_ms(timeout_ms);
 	while (ok)
 	{
-		pthread_cond_timedwait(&(this -> posixCondId), &(this -> posixId), &timeout_ts);
+		pthread_cond_timedwait(&((this -> mutex).posixCondId), &((this -> mutex).posixId), &timeout_ts);
 	}
 	return ok;
 }
@@ -71,28 +70,28 @@ bool Mutex::Monitor::wait(double timeout_ms)
 
 void Mutex::Monitor::notify()
 {
-	pthread_cond_signal(&(this -> posixCondId));
+	pthread_cond_signal(&((this -> mutex).posixCondId));
 }
 
 
 void Mutex::Monitor::notifyAll()
 {
-	pthread_cond_broadcast(&(this -> posixCondId));
+	pthread_cond_broadcast(&((this -> mutex).posixCondId));
 }
 
 
-Mutex::Lock::Lock(Mutex& m) : public Monitor(m)
+Mutex::Lock::Lock(Mutex& m) : Mutex::Monitor(m)
 {
-	m -> lock();
+	(this -> mutex).lock();
 }
 
-Mutex::Lock::Lock(Mutex& m, double timeout_ms) : public Monitor(m)
+Mutex::Lock::Lock(Mutex& m, double timeout_ms) : Mutex::Monitor(m)
 {
 
-	bool val = m -> lock(timeout_ms);
+	bool val = (this -> mutex).lock(timeout_ms);
 	if (!val)
 	{
-		throw(TimeoutException);
+		throw Mutex::Monitor::TimeoutException();
 	}
 }
 
@@ -101,12 +100,13 @@ Mutex::Lock::~Lock()
 {}
 
 
-Mutex::TryLock::TryLock(Mutex& m) : public Monitor(m)
+Mutex::TryLock::TryLock(Mutex& m) : Mutex::Monitor(m)
 {
-	bool val = m -> trylock();
+	bool val = (this -> mutex).trylock();
 	if (!val)
 	{
-		throw(TimeoutException);
+		
+		throw Mutex::Monitor::TimeoutException();
 	}
 }
 

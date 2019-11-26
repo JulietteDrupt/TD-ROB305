@@ -1,5 +1,5 @@
 #ifndef MUTEX_H
-#define 
+#define MUTEX_H
 
 #include <signal.h>
 
@@ -29,12 +29,11 @@ class Mutex::Monitor
 		bool wait(double timeout_ms);
 		void notify();
 		void notifyAll();
+		Mutex& mutex;
 
 	protected :
 		Monitor(Mutex& m);
 
-	private :
-		Mutex& mutex;
 };
 
 class Mutex::Monitor::TimeoutException
@@ -53,7 +52,7 @@ class Mutex::Lock : public Mutex::Monitor
 		~Lock();	
 };
 
-class Mutex::TryLock
+class Mutex::TryLock : public Mutex::Monitor
 {
 	public :
 		TryLock(Mutex& m);
