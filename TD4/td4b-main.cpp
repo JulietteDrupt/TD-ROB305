@@ -4,6 +4,9 @@
 #include <iostream>
 using namespace std;
 
+/*
+This program reproduces TD2c with an object-oriented architecture.
+*/
 
 int main(int argc, char* argv[])
 {
@@ -13,10 +16,28 @@ int main(int argc, char* argv[])
 	Data data = {nLoops, 0.0};
 
 	Mutex mutex;
-	//Mutex::Lock l = Mutex::Lock(mutex);
-	//Mutex::TryLock l2 = Mutex::TryLock(mutex);
+	IncrementThreadWithMutex *incThreads[nTasks];
 
-	IncrementThreadWithMutex* inct = new IncrementThreadWithMutex(data, mutex);
+	for (unsigned int i=0; i<nTasks; i++)
+	{
+		incThreads[i] = new IncrementThreadWithMutex(data, mutex);
+	}
+
+	for (unsigned int i=0; i<nTasks; i++)
+	{
+		incThreads[i] -> start();
+	}
+
+	for (unsigned int i=0; i<nTasks; i++)
+	{
+		incThreads[i] -> join();
+	}
+
+	for (unsigned int i=0; i<nTasks; i++)
+	{
+		cout << (incThreads[i] -> data).counter << endl;
+	}
+
 
 	return 0;
 }
