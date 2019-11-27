@@ -7,17 +7,40 @@
 int main()
 {
 	Semaphore sem;
-	ProductorThread pt = ProductorThread(sem);
-	ProductorThread pt2 = ProductorThread(sem);
-	ConsumerThread ct = ConsumerThread(sem);
+	unsigned int nCons = 5;
+	unsigned int nProd = 5;
+	ProductorThread *prodThreads[nProd];
+	ConsumerThread *consThreads[nProd];
 
-	pt.start();
-	pt2.start();
-	ct.start();
-	pt2.start();
-	pt.join();
-	pt2.join();
-	ct.join();
+	for (unsigned int i=0; i<nProd; i++)
+	{
+		prodThreads[i] = new ProductorThread(sem);
+	}
+
+	for (unsigned int i=0; i<nCons; i++)
+	{
+		consThreads[i] = new ConsumerThread(sem);
+	}
+
+	for (unsigned int i=0; i<nProd; i++)
+	{
+		prodThreads[i] -> start();
+	}
+
+	for (unsigned int i=0; i<nCons; i++)
+	{
+		consThreads[i] -> start();
+	}
+
+	for (unsigned int i=0; i<nProd; i++)
+	{
+		prodThreads[i] -> join();
+	}
+
+	for (unsigned int i=0; i<nCons; i++)
+	{
+		consThreads[i] -> join();
+	}
 
 	return 0;
 }
