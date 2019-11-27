@@ -1,6 +1,8 @@
 #include "Semaphore.h"
 #include "Mutex.h"
 #include <pthread.h>
+#include <iostream>
+using namespace std;
 
 Semaphore::Semaphore(unsigned int initCount, unsigned int maxCount) : counter(initCount), maxCount(maxCount)
 {}
@@ -21,11 +23,6 @@ void Semaphore::give()
 
 void Semaphore::take()
 {
-	if (counter > 0)
-	{
-		this -> counter -= 1;
-	}
-
 	if (counter == 0)
 	{
 		// si le compteur de jetons est à zéro, appel bloquant
@@ -33,16 +30,15 @@ void Semaphore::take()
 		ml.wait();
 		ml.~Lock();
 	}
+	else
+	{
+		this -> counter -= 1;
+	}
 }
 
 bool Semaphore::take(double timeout_ms)
 {
 	bool val = true;
-
-	if (counter > 0)
-	{
-		this -> counter -= 1;
-	}
 
 	if (counter == 0)
 	{
@@ -51,6 +47,12 @@ bool Semaphore::take(double timeout_ms)
 		val = ml.wait(timeout_ms);
 		ml.~Lock();
 	}
+
+	else
+	{
+		this -> counter -= 1;
+	}
+
 	return val;
 }
 
