@@ -7,7 +7,13 @@ Semaphore::Semaphore(unsigned int initCount, unsigned int maxCount) : counter(in
 
 void give()
 {
-	if (counter < maxCount)
+	if (this -> counter == 0)
+	{
+		Mutex::TryLock mtl = Mutex::TryLock(this -> mutex);
+		mtl.notify()
+		mtl.~TryLock();
+	}
+	if (this -> counter < maxCount)
 	{
 		this -> counter += 1;
 	}

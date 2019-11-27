@@ -2,10 +2,8 @@
 #include <iostream>
 using namespace std;
 
-IncrementThread::IncrementThread(Data data) : Thread()
-{
-	this -> data = data;
-}
+IncrementThread::IncrementThread(Data data) : Thread(), data(data)
+{}
 
 IncrementThread::~IncrementThread()
 {}
