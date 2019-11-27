@@ -12,7 +12,7 @@ IncrementThread::~IncrementThread()
 
 void IncrementThread::run()
 {
-	for (unsigned i=0; i < (this -> data).nLoops; i++)
+	for (unsigned int i=0; i < (this -> data).nLoops; i++)
 	{
 		(this -> data).counter += 1.0;
 	}

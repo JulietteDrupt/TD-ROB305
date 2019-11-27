@@ -13,10 +13,10 @@ int main(int argc, char* argv[])
 	Data data = {nLoops, 0.0};
 
 	Mutex mutex;
-	Mutex::Lock l = Mutex::Lock(mutex);
-	Mutex::TryLock l2 = Mutex::TryLock(mutex);
+	//Mutex::Lock l = Mutex::Lock(mutex);
+	//Mutex::TryLock l2 = Mutex::TryLock(mutex);
 
-	IncrementThreadWithMutex* inct = new IncrementThreadWithMutex(data, l);
+	IncrementThreadWithMutex* inct = new IncrementThreadWithMutex(data, mutex);
 
 	return 0;
 }
