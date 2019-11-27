@@ -4,14 +4,9 @@
 #include <iostream>
 using namespace std;
 
-/*
-This program reproduces TD2c with an object-oriented architecture.
-*/
 
 int main(int argc, char* argv[])
 {
-	cout << "Reproducing TD-2c" << endl;
-
 	unsigned int nLoops = stoi(argv[1]);
 	unsigned int nTasks = stoi(argv[2]);
 
@@ -20,6 +15,8 @@ int main(int argc, char* argv[])
 	IncrementThread *incThreads[nTasks];
 
 	Mutex mutex;
+	Mutex::Lock* l = new Mutex::Lock(mutex);
+	Mutex::TryLock* l2 = new Mutex::TryLock(mutex);
 
 	for (unsigned int i=0; i<nTasks; i++)
 	{
