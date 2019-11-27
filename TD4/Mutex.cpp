@@ -49,22 +49,16 @@ Mutex::Monitor::Monitor(Mutex& m) : mutex(m){}
 
 void Mutex::Monitor::wait()
 {
-	while (true)
-	{
-		pthread_cond_wait(&((this -> mutex).posixCondId), &((this -> mutex).posixId));
-	}
+	pthread_cond_wait(&((this -> mutex).posixCondId), &((this -> mutex).posixId));
 }
 
 
 bool Mutex::Monitor::wait(double timeout_ms)
 {
-	bool ok = true;
 	timespec timeout_ts = timespec_from_ms(timeout_ms);
-	while (ok)
-	{
-		pthread_cond_timedwait(&((this -> mutex).posixCondId), &((this -> mutex).posixId), &timeout_ts);
-	}
-	return ok;
+	pthread_cond_timedwait(&((this -> mutex).posixCondId), &((this -> mutex).posixId), &timeout_ts);
+
+	return true; // ?
 }
 
 
@@ -83,17 +77,13 @@ void Mutex::Monitor::notifyAll()
 Mutex::Lock::Lock(Mutex& m) : Mutex::Monitor(m)
 {
 	(this -> mutex).lock();
-	this -> wait();
-	(this -> mutex).unlock();
 }
 
 Mutex::Lock::Lock(Mutex& m, double timeout_ms) : Mutex::Monitor(m)
 {
 
-	bool val1 = (this -> mutex).lock(timeout_ms);
-	bool val2 = this -> wait(timeout_ms);
-	(this -> mutex).unlock();
-	if (!(val1 && val2))
+	bool val = (this -> mutex).lock(timeout_ms);
+	if (!val)
 	{
 		throw Mutex::Monitor::TimeoutException();
 	}
@@ -101,23 +91,24 @@ Mutex::Lock::Lock(Mutex& m, double timeout_ms) : Mutex::Monitor(m)
 
 
 Mutex::Lock::~Lock()
-{}
+{
+	(this -> mutex).unlock();
+}
 
 
 Mutex::TryLock::TryLock(Mutex& m) : Mutex::Monitor(m)
 {
 	bool val = (this -> mutex).trylock();
-	this -> wait();
-	(this -> mutex).unlock();
 	if (!val)
 	{
-		
 		throw Mutex::Monitor::TimeoutException();
 	}
 }
 
 
 Mutex::TryLock::~TryLock()
-{}
+{
+	(this -> mutex).unlock();
+}
 
 
