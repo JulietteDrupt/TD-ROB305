@@ -56,9 +56,9 @@ void Mutex::Monitor::wait()
 bool Mutex::Monitor::wait(double timeout_ms)
 {
 	timespec timeout_ts = timespec_from_ms(timeout_ms);
-	pthread_cond_timedwait(&((this -> mutex).posixCondId), &((this -> mutex).posixId), &timeout_ts);
+	int val = pthread_cond_timedwait(&((this -> mutex).posixCondId), &((this -> mutex).posixId), &timeout_ts);
 
-	return true; // ?
+	return (val == 0);
 }
 
 
