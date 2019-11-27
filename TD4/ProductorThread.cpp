@@ -6,7 +6,7 @@ ProductorThread::ProductorThread(Semaphore& sem) : Thread(), sem(sem)
 ProductorThread::~ProductorThread()
 {}
 
-void IncrementThread::run()
+void ProductorThread::run()
 {
 	(this -> sem).give();
 }

@@ -6,7 +6,7 @@ ConsumerThread::ConsumerThread(Semaphore& sem) : Thread(), sem(sem)
 ConsumerThread::~ConsumerThread()
 {}
 
-void IncrementThread::run()
+void ConsumerThread::run()
 {
 	(this -> sem).take();
 }
