@@ -1,4 +1,4 @@
-#include "IncrementThread.h"
+#include "IncrementThreadWithMutex.h"
 #include "Mutex.h"
 #include <signal.h>
 #include <iostream>
@@ -12,32 +12,13 @@ int main(int argc, char* argv[])
 
 	Data data = {nLoops, 0.0};
 
-	IncrementThread *incThreads[nTasks];
-
 	Mutex mutex;
-	Mutex::Lock* l = new Mutex::Lock(mutex);
-	Mutex::TryLock* l2 = new Mutex::TryLock(mutex);
+	Mutex::Lock l = Mutex::Lock(mutex);
+	Mutex::TryLock l2 = Mutex::TryLock(mutex);
 
-	for (unsigned int i=0; i<nTasks; i++)
-	{
-		incThreads[i] = new IncrementThread(data);
-	}
-
-	for (unsigned int i=0; i<nTasks; i++)
-	{
-		incThreads[i] -> start();
-	}
-
-	for (unsigned int i=0; i<nTasks; i++)
-	{
-		incThreads[i] -> join();
-	}
-
-	for (unsigned int i=0; i<nTasks; i++)
-	{
-		cout << (incThreads[i] -> data).counter << endl;
-	}
+	IncrementThreadWithMutex* inct = new IncrementThreadWithMutex(data, l);
 
 	return 0;
 }
+
 
