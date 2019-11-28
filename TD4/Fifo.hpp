@@ -1,3 +1,6 @@
+#ifndef FIFO_H
+#define FIFO_H
+
 #include "Mutex.h"
 #include <queue>
 
@@ -11,7 +14,7 @@ class Fifo
 		T pop(double timeout_ms);
 
 	protected :
-		Mutex m;
+		Mutex mutex;
 
 	private :
 		std::queue<T> elements;
@@ -74,4 +77,6 @@ T Fifo<T>::pop(double timeout_ms)
 	}
 	return val;
 }
+
+#endif
 
