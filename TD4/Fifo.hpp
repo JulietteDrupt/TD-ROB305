@@ -1,14 +1,14 @@
 #include "Mutex.h"
+#include <queue>
 
 template <typename T>
-
 class Fifo
 {
 	public :
 		class EmptyException;
 		void push(T element);
 		T pop();
-		T pop(double timeout_ms) : throw EmptyException;
+		T pop(double timeout_ms);
 
 	protected :
 		Mutex m;
@@ -17,7 +17,8 @@ class Fifo
 		std::queue<T> elements;
 };
 
-class Fifo::EmptyException
+template <typename T>
+class Fifo<T>::EmptyException
 {
 	virtual const char* what() const throw()
 	{
@@ -25,7 +26,8 @@ class Fifo::EmptyException
 	}
 };
 
-void Fifo::push(T element)
+template <typename T>
+void Fifo<T>::push(T element)
 {
 	if ((this -> elements).empty())
 	{
@@ -33,10 +35,11 @@ void Fifo::push(T element)
 		mtl.notify();
 		mtl.~TryLock();
 	}
-	(this -> elements).push(T);
+	(this -> elements).push(element);
 }
 
-T Fifo::pop()
+template <typename T>
+T Fifo<T>::pop()
 {
 	T val;
 	if ((this -> elements).empty())
@@ -53,12 +56,13 @@ T Fifo::pop()
 	return val;
 }
 
-T Fifo::pop(double timeout_ms)
+template <typename T>
+T Fifo<T>::pop(double timeout_ms)
 {
 	T val;
 	if ((this -> elements).empty())
 	{
-		throw Fifo:EmptyException();
+		throw Fifo::EmptyException();
 		Mutex::Lock ml = Mutex::Lock(this -> mutex, timeout_ms);
 		ml.wait();
 		ml.~Lock();
