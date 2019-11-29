@@ -9,7 +9,7 @@ Mutex::Mutex(bool isInversionSafe)
 
 	if (isInversionSafe)
 	{
-		pthread_mutexattr_setprotocol(&mutexAttribute, PTHREAD_PRIO_PROTECT);
+		pthread_mutexattr_setprotocol(&mutexAttribute, PTHREAD_PRIO_INHERIT);
 	}
 
 	pthread_mutexattr_settype(&mutexAttribute, PTHREAD_MUTEX_RECURSIVE);
