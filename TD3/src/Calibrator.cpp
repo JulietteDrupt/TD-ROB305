@@ -1,5 +1,5 @@
 /*!
- * \file Calibrator.c
+ * \file Calibrator.cpp
  * \brief Calibrator class implementation
  * \author Juliette DRUPT
  */

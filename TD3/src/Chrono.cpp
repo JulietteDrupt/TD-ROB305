@@ -1,5 +1,5 @@
 /*!
- * \file Chrono.c
+ * \file Chrono.cpp
  * \brief Chrono class implementation
  * \author Juliette DRUPT
  */

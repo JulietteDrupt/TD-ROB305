@@ -1,5 +1,5 @@
 /*!
- * \file CpuLoop.c
+ * \file CpuLoop.cpp
  * \brief CpuLoop class implementation
  * \author Juliette DRUPT
  */

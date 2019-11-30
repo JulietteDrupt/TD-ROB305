@@ -1,3 +1,9 @@
+/*!
+ * \file PeriodicTimer.cpp
+ * \brief PeriodicTimer class implementation
+ * \author Juliette DRUPT
+ */
+
 #include "PeriodicTimer.h"
 #include "../TimeSpec.h"
 #include <signal.h>
@@ -16,4 +22,3 @@ void PeriodicTimer::start(double duration_ms)
 	timer_settime(this -> tid, 0, &its, NULL);
 
 }
-

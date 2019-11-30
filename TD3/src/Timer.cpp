@@ -1,3 +1,9 @@
+/*!
+ * \file Timer.cpp
+ * \brief Timer class implementation
+ * \author Juliette DRUPT
+ */
+
 #include "Timer.h"
 #include "../TimeSpec.h"
 #include <signal.h>
@@ -7,7 +13,7 @@ using namespace std;
 Timer::Timer()
 {
 	cout << "Instanciating timer" << endl;
-	
+
 	(this -> sa).sa_flags = SA_SIGINFO;
 	(this -> sa).sa_sigaction = Timer::call_callback;
 	sigemptyset(&(this -> sa).sa_mask);
@@ -17,7 +23,7 @@ Timer::Timer()
 	(this -> sev).sigev_signo = SIGRTMIN;
 	(this -> sev).sigev_value.sival_ptr = this;
 
-	timer_create(CLOCK_REALTIME, &(this -> sev), &(this -> tid));	
+	timer_create(CLOCK_REALTIME, &(this -> sev), &(this -> tid));
 }
 
 Timer::~Timer()
@@ -56,5 +62,3 @@ void Timer::call_callback (int sig, siginfo_t* si, void* user)
 	Timer *timer = ((Timer *) si->si_value.sival_ptr) ;
 	timer -> callback();
 }
-
-

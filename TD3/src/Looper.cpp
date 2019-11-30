@@ -1,5 +1,5 @@
 /*!
- * \file Looper.c
+ * \file Looper.cpp
  * \brief Calibrator class implementation
  * \author Juliette DRUPT
  */

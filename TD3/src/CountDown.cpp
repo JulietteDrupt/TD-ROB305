@@ -1,5 +1,5 @@
 /*!
- * \file CounDown.c
+ * \file CounDown.cpp
  * \brief CountDown class implementation
  * \author Juliette DRUPT
  */

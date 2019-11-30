@@ -24,7 +24,7 @@ class Calibrator : public PeriodicTimer
 	 	 *
 	 	 *  Constructor of Calibrator class.
 	 	 *
-		 *  Creates calibrator and computes looper calibration.
+		 *  Creates Calibrator and computes looper calibration.
 		 *
 	 	 *  \param samplingPeriod_ms : sampling period for calibration
 		 *  \param nSamples : number of samples to take for calibration
@@ -35,7 +35,7 @@ class Calibrator : public PeriodicTimer
   		*
   		*  Computes l(t) = a*t + b
   		*
-  		*  \param strSong : le morceau a ajouter
+  		*  \param duration : duration in milliseconds
   		*  \return the corresponding number of loops
   		*/
 		double nLoops(double duration);
