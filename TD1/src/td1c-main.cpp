@@ -4,7 +4,7 @@
  * \author Juliette DRUPT
  * \date November 30th 2020
  *
- * This program increments the value of a counter by executing a loop a given number of times. The counter starts at 0.0. The number of loops is given in argument to the programm.The value of the counter and the duration of the incrementation are displayed at the end of the programm.
+ * This program increments the value of a counter by executing a loop a given number of times. The counter starts at 0.0. The number of loops is given in argument to the programm. The value of the counter and the duration of the incrementation are displayed at the end of the programm.
  *
  */
 
@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		cout << "Not enough arguments. 2 expected." << endl;
+		cout << "Uncorrect number of arguments. 1 expected." << endl;
 	}
 
 	return 0;
