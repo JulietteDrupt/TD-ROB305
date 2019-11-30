@@ -13,7 +13,6 @@ using namespace std;
 
 Calibrator::Calibrator(double samplingPeriod_ms, unsigned int nSamples) : PeriodicTimer(), nSamples(nSamples)
 {
-	Looper looper;
 	this -> start(samplingPeriod_ms);
 	(this -> looper).runLoop();
 
@@ -32,7 +31,7 @@ Calibrator::Calibrator(double samplingPeriod_ms, unsigned int nSamples) : Period
 	long double sumxx = nSamples * (nSamples + 1) * (2 * nSamples + 1) / 6 * samplingPeriod_ms * samplingPeriod_ms ;
 	long double sumxy = 0;
 
-	for (int i=0; i< nSamples; i++)
+	for (unsigned int i=0; i< nSamples; i++)
 	{
 		sumy += this -> samples[i];
 		sumxy += this -> samples[i] * (i + 1) * samplingPeriod_ms;
