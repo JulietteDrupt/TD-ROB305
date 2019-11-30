@@ -1,5 +1,5 @@
 /**
- * \file td1d-main.c
+ * \file td1d-main.cpp
  * \brief Mesures the execution time of a function.
  * \author Juliette DRUPT
  * \date November 30th 2020

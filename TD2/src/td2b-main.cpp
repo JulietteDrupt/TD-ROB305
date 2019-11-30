@@ -1,5 +1,5 @@
 /**
- * \file td2b-main.c
+ * \file td2b-main.cpp
  * \brief Measures the execution time of a multithread execution.
  * \author Juliette DRUPT
  * \date November 30th 2020

@@ -1,5 +1,5 @@
 /**
- * \file td2c-main.c
+ * \file td2c-main.cpp
  * \brief Runs function on several threads with mutex.
  * \author Juliette DRUPT
  * \date November 30th 2020

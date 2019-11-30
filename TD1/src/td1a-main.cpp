@@ -1,5 +1,5 @@
 /**
- * \file td1a-main.c
+ * \file td1a-main.cpp
  * \brief Test programm for TimeSpec functions.
  * \author Juliette DRUPT
  * \date November 30th 2020

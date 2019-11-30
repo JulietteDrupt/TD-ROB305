@@ -1,5 +1,5 @@
 /**
- * \file td2a-main.c
+ * \file td2a-main.cpp
  * \brief Runs function on several threads without mutex.
  * \author Juliette DRUPT
  * \date November 30th 2020

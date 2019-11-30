@@ -1,5 +1,5 @@
 /**
- * \file td1c-main.c
+ * \file td1c-main.cpp
  * \brief Increments of a counter by executing a loop a given number of times.
  * \author Juliette DRUPT
  * \date November 30th 2020

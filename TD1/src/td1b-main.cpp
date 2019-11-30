@@ -1,5 +1,5 @@
 /**
- * \file td1b-main.c
+ * \file td1b-main.cpp
  * \brief Posix timer with callback implementation.
  * \author Juliette DRUPT
  * \date November 30th 2020
