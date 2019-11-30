@@ -53,8 +53,8 @@ class Chrono
 		double lap();
 
 	private :
-		timespec startTime_; /*!< Chrono start time */
-		timespec stopTime_; /*!< Chrono stop time */
+		timespec start_time; /*!< Chrono start time */
+		timespec stop_time; /*!< Chrono stop time */
 		bool active; /*!< True if the Chrono isn't stopped */
 };
 

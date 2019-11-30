@@ -8,18 +8,18 @@
 #include "TimeSpec.h"
 #include <time.h>
 
-Chrono::Chrono() : startTime(timespec_now()), stopTime(timespec_now()), active(true)
+Chrono::Chrono() : start_time(timespec_now()), stop_time(timespec_now()), active(true)
 {}
 
 void Chrono::stop()
 {
-	this -> stopTime_ = timespec_now();
+	this -> stop_time = timespec_now();
 	this -> active = false;
 }
 
 void Chrono::restart()
 {
-	this -> startTime_ = timespec_now();
+	this -> start_time = timespec_now();
 	this -> active = true;
 }
 
@@ -30,12 +30,12 @@ bool Chrono::isActive()
 
 double Chrono::startTime()
 {
-	return timespec_to_ms(this -> startTime_);
+	return timespec_to_ms(this -> start_time);
 }
 
 double Chrono::stopTime()
 {
-	return timespec_to_ms(this -> stopTime_);
+	return timespec_to_ms(this -> stop_time);
 }
 
 double Chrono::lap()
@@ -44,11 +44,11 @@ double Chrono::lap()
 	if (this -> active)
 	{
 		timespec current_time = timespec_now();
-		lap = timespec_to_ms(current_time - this -> startTime_);
+		lap = timespec_to_ms(current_time - this -> start_time);
 	}
 	else
 	{
-		lap = timespec_to_ms(this -> stopTime_ - this -> startTime_);
+		lap = timespec_to_ms(this -> stop_time - this -> start_time);
 	}
 	return lap;
 }
