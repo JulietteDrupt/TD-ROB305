@@ -21,8 +21,8 @@ using namespace std;
  */
 struct Data
 {
-	volatile unsigned int nLoops;
-	volatile double counter;
+	volatile unsigned int nLoops; /*!< Number of loops. */
+	volatile double counter; /*!< Counter. */
 };
 
 /**

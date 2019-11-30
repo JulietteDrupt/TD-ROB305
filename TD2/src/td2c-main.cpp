@@ -22,10 +22,10 @@ using namespace std;
  */
 struct Data
 {
-	volatile unsigned int nLoops;
-	volatile double counter;
-	bool protect;
-	pthread_mutex_t mutex;
+	volatile unsigned int nLoops; /*!< Number of loops. */
+	volatile double counter; /*!< Counter. */
+	bool protect; /*!< Enable mutex protection or not. */
+	pthread_mutex_t mutex; /*!< Mutex, only used in case protection is enabled. */
 };
 
 /**
