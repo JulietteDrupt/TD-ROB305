@@ -1,3 +1,9 @@
+/*!
+ * \file FifoProducerThread.cpp
+ * \brief FifoProducerThread class implementation
+ * \author Juliette DRUPT
+ */
+
 #include "FifoProducerThread.h"
 #include <iostream>
 using namespace std;
@@ -15,4 +21,3 @@ void FifoProducerThread::run()
 		(this -> fifo).push(i);
 	}
 }
-

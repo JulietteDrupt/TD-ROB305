@@ -1,3 +1,9 @@
+/*!
+ * \file Mutex.h
+ * \brief Encapsulation of the functionalities of a posix mutex.
+ * \author Juliette DRUPT
+ */
+
 #ifndef MUTEX_H
 #define MUTEX_H
 
@@ -49,7 +55,7 @@ class Mutex::Lock : public Mutex::Monitor
 	public :
 		Lock(Mutex& m);
 		Lock(Mutex& m, double timeout_ms);
-		~Lock();	
+		~Lock();
 };
 
 class Mutex::TryLock : public Mutex::Monitor

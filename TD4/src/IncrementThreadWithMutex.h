@@ -9,7 +9,7 @@
 class IncrementThreadWithMutex : public IncrementThread
 {
 	public :
-		IncrementThreadWithMutex(Data data, Mutex& mutex);
+		IncrementThreadWithMutex(Data* data, Mutex& mutex);
 		~IncrementThreadWithMutex();
 	protected :
 		Mutex& mutex;

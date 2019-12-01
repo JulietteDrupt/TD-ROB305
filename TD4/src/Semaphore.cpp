@@ -1,3 +1,9 @@
+/*!
+ * \file Semaphore.cpp
+ * \brief Semaphore class implementation
+ * \author Juliette DRUPT
+ */
+
 #include "Semaphore.h"
 #include "Mutex.h"
 #include <pthread.h>
@@ -55,4 +61,3 @@ bool Semaphore::take(double timeout_ms)
 
 	return val;
 }
-

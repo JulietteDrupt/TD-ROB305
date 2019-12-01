@@ -1,5 +1,11 @@
+/*!
+ * \file PosixThread.cpp
+ * \brief PosixThread class implementation
+ * \author Juliette DRUPT
+ */
+
 #include "PosixThread.h"
-#include "../TimeSpec.h"
+#include "TimeSpec.h"
 #include <pthread.h>
 #include <signal.h>
 #include <time.h>
@@ -107,4 +113,3 @@ PosixThread::Exception::Exception(const string& msg)
 {
 	this -> _msg = msg;
 }
-

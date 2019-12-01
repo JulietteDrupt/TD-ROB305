@@ -1,3 +1,9 @@
+/*!
+ * \file FifoConsumerThread.cpp
+ * \brief FifoConsumerThread class implementation
+ * \author Juliette DRUPT
+ */
+
 #include "FifoConsumerThread.h"
 #include <iostream>
 using namespace std;
@@ -15,4 +21,3 @@ void FifoConsumerThread::run()
 		cout << (this -> fifo).pop() << endl;
 	}
 }
-

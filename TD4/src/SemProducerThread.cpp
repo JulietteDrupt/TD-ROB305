@@ -1,3 +1,9 @@
+/*!
+ * \file SemProducerThread.cpp
+ * \brief SemProducerThread class implementation
+ * \author Juliette DRUPT
+ */
+
 #include "SemProducerThread.h"
 #include <iostream>
 using namespace std;
@@ -13,4 +19,3 @@ void SemProducerThread::run()
 	cout << "Giving !" << endl;
 	(this -> sem).give();
 }
-

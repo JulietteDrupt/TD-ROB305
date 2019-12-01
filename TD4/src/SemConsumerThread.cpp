@@ -1,3 +1,9 @@
+/*!
+ * \file SemConsumerThread.cpp
+ * \brief SemConsumerThread class implementation
+ * \author Juliette DRUPT
+ */
+
 #include "SemConsumerThread.h"
 #include <iostream>
 using namespace std;
@@ -13,4 +19,3 @@ void SemConsumerThread::run()
 	cout << "Taking !" << endl;
 	(this -> sem).take();
 }
-

@@ -1,5 +1,11 @@
+/*!
+ * \file Thread.cpp
+ * \brief Thread class implementation
+ * \author Juliette DRUPT
+ */
+
 #include "Thread.h"
-#include "../TimeSpec.h"
+#include "TimeSpec.h"
 #include <time.h>
 #include <pthread.h>
 #include <iostream>
@@ -56,4 +62,3 @@ double Thread::execTime_ms()
 {
 	return timespec_to_ms(this -> stopTime - this -> startTime);
 }
-
