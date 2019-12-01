@@ -1,3 +1,12 @@
+/**
+ * \file td4d-main.cpp
+ * \brief Tests Fifo class
+ * \author Juliette DRUPT
+ * \date December 1st 2020
+ *
+ * This program tests Fifo class using threads that produce and consume elements of a Fifo
+ */
+
 #include "Fifo.hpp"
 #include "FifoProducerThread.h"
 #include "FifoConsumerThread.h"
@@ -30,4 +39,3 @@ int main()
 
 	return 0;
 }
-

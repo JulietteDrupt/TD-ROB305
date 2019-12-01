@@ -1,6 +1,6 @@
 /**
  * \file td4c-main.cpp
- * \brief Semaphore class.
+ * \brief Tests Semaphore class.
  * \author Juliette DRUPT
  * \date December 1st 2020
  *

@@ -1,23 +1,51 @@
+/*!
+ * \file Fifo.hpp
+ * \brief Fifo template
+ * \author Juliette DRUPT
+ */
+
 #ifndef FIFO_H
 #define FIFO_H
 
 #include "Mutex.h"
 #include <queue>
 
+/*! \class Fifo
+ * \brief class that consist in a fifo
+ */
 template <typename T>
 class Fifo
 {
 	public :
+	/*! \class Fifo::EmptyException
+	 * \brief class that throws an exception if the fifo is empty.
+	 */
 		class EmptyException;
+		/*!
+			*  \brief Adds an element to the fifo, as last item
+			*
+			*  \param element : element to add
+			*/
 		void push(T element);
+		/*!
+			*  \brief Removes the first element in the fifo
+			*
+			*  \return element removed from the fifo
+			*/
 		T pop();
+		/*!
+			*  \brief Removes the first element in the fifo with a timeout
+			*
+			*  \param timeout_ms : timeout value in milliseconds
+			*  \return element removed from the fifo or random element in case the pop did not succeed within the timeout
+			*/
 		T pop(double timeout_ms);
 
 	protected :
-		Mutex mutex;
+		Mutex mutex; /*!< Mutex object */
 
 	private :
-		std::queue<T> elements;
+		std::queue<T> elements; /*!< Elements in the fifo */
 };
 
 template <typename T>
@@ -79,4 +107,3 @@ T Fifo<T>::pop(double timeout_ms)
 }
 
 #endif
-
