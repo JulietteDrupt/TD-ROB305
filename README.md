@@ -162,3 +162,14 @@ Avec la toolchain pour exécuter sur la Raspberry PI, une fois l'environnement s
 $ cd TD4
 $ $CXX -Wall -Wextra src/td4d-main.cpp src/TimeSpec.cpp src/PosixThread.cpp src/Thread.cpp src/FifoConsumerThread.cpp src/FifoProducerThread.cpp src/Mutex.cpp -o td4d -lrt -lpthread
 ```
+## TD5
+Sur PC :
+```sh
+$ cd TD5
+$ g++ -Wall -Wextra src/*.cpp -o td5 -lrt -lpthread
+```
+Avec la toolchain pour exécuter sur la Raspberry PI, une fois l'environnement sourcé :
+```sh
+$ cd TD5
+$ $CXX -Wall -Wextra -Wno-psabi src/*.cpp -o td5 -lrt -lpthread
+```
