@@ -1,13 +1,21 @@
-//#define _GNU_SOURCE
+/**
+ * \file td5-main.cpp
+ * \brief Tests protection against priority inversion
+ * \author Juliette DRUPT
+ * \date December 1st 2020
+ *
+ * This program tests protection against priority inversion. Modify boolean value of Mutex constructor line 37 to choose to protect or not from inversion priority.
+ */
+
 #include <sched.h>
 
 #include "Mutex.h"
 #include <time.h>
-#include "../TimeSpec.h"
+#include "TimeSpec.h"
 #include <signal.h>
 #include <pthread.h>
-#include "../TD3/Calibrator.h"
-#include "../TD3/CpuLoop.h"
+#include "Calibrator.h"
+#include "CpuLoop.h"
 #include "ThreadWithCpuLoop.h"
 #include <iostream>
 using namespace std;
@@ -44,13 +52,10 @@ int main()
 	B.join();
 	C.join();
 
-	timespec end = timespec_now();
-
-	cout << "A : full duration : " << A.execTime_ms() * CLOCKS_PER_SEC * 1e-3 << endl;
-	cout << "B : full duration : " << B.execTime_ms() * CLOCKS_PER_SEC * 1e-3 << endl;
-	cout << "C : full duration : " << C.execTime_ms() * CLOCKS_PER_SEC * 1e-3 << endl;
+	cout << "A : full duration in clock tick : " << A.execTime_ms() * CLOCKS_PER_SEC * 1e-3 << endl;
+	cout << "B : full duration in clock ticks : " << B.execTime_ms() * CLOCKS_PER_SEC * 1e-3 << endl;
+	cout << "C : full duration in clock ticks : " << C.execTime_ms() * CLOCKS_PER_SEC * 1e-3 << endl;
 
 
 	return 0;
 }
-

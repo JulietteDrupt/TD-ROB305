@@ -1,7 +1,7 @@
 #include "ThreadWithCpuLoop.h"
-#include "../TD3/CpuLoop.h"
+#include "CpuLoop.h"
 #include "Mutex.h"
-#include "../TD3/Calibrator.h"
+#include "Calibrator.h"
 #include <time.h>
 
 double tick_to_ms(int ticks)
@@ -44,4 +44,3 @@ void ThreadWithCpuLoop::run()
 		(this -> cpul).runTime(this -> duration);
 	}
 }
-

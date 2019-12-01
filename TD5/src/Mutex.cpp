@@ -1,5 +1,11 @@
+/*!
+ * \file Mutex.cpp
+ * \brief Mutex class implementation
+ * \author Juliette DRUPT
+ */
+
 #include "Mutex.h"
-#include "../TimeSpec.h"
+#include "TimeSpec.h"
 #include <pthread.h>
 
 Mutex::Mutex(bool isInversionSafe)
@@ -116,5 +122,3 @@ Mutex::TryLock::~TryLock()
 {
 	(this -> mutex).unlock();
 }
-
-
