@@ -1,0 +1,30 @@
+td1a  :$CXX -Wall -Wextra src/td1a-main.cpp src/TimeSpec.cpp -o td1a -lrt -lpthread
+
+td1b : $CXX -Wall -Wextra src/td1b-main.cpp -o td1b -lrt -lpthread
+
+td1c  :$CXX -Wall -Wextra src/td1c-main.cpp src/TimeSpec.cpp -o td1c -lrt -lpthread
+
+td1d  :$CXX -Wall -Wextra src/td1d-main.cpp src/TimeSpec.cpp -o td1d -lrt -lpthread
+
+td2a : $CXX -Wall -Wextra src/td2a-main.cpp -o td2a -lrt -lpthread
+
+td2b  :$CXX -Wall -Wextra src/td2b-main.cpp src/TimeSpec.cpp -o td2b -lrt -lpthread
+
+td2c  :$CXX -Wall -Wextra src/td2c-main.cpp src/TimeSpec.cpp -o td2c -lrt -lpthread
+
+td3a : $CXX -Wall -Wextra src/td3a-main.cpp src/TimeSpec.cpp src/Chrono.cpp -o td3a -lrt -lpthread
+
+td3b : $CXX -Wall -Wextra src/td3b-main.cpp src/TimeSpec.cpp src/CountDown.cpp src/PeriodicTimer.cpp src/Timer.cpp -o td3b -lrt -lpthread
+
+td3c : $CXX -Wall -Wextra -Wno-psabi src/td3c-main.cpp src/TimeSpec.cpp src/Calibrator.cpp src/PeriodicTimer.cpp src/Timer.cpp src/Looper.cpp src/CpuLoop.cpp -o td3c -lrt -lpthread
+
+td4a : $CXX -Wall -Wextra src/td4a-main.cpp src/TimeSpec.cpp src/PosixThread.cpp src/Thread.cpp src/IncrementThread.cpp -o td4a -lrt -lpthread
+
+td4b : $CXX -Wall -Wextra src/td4b-main.cpp src/TimeSpec.cpp src/PosixThread.cpp src/Thread.cpp src/IncrementThread.cpp src/IncrementThreadWithMutex.cpp  src/Mutex.cpp -o td4b -lrt -lpthread
+
+td4c : $CXX -Wall -Wextra src/td4c-main.cpp src/TimeSpec.cpp src/PosixThread.cpp src/Thread.cpp src/SemConsumerThread.cpp src/SemProducerThread.cpp src/Mutex.cpp src/Semaphore.cpp -o td4c -lrt -lpthread
+
+td4d : $CXX -Wall -Wextra src/td4d-main.cpp src/TimeSpec.cpp src/PosixThread.cpp src/Thread.cpp src/FifoConsumerThread.cpp src/FifoProducerThread.cpp src/Mutex.cpp -o td4d -lrt -lpthread
+
+td5 : $CXX -Wall -Wextra -Wno-psabi src/*.cpp -o td5 -lrt -lpthread
+
