@@ -2,7 +2,7 @@
  * \file td4b-main.cpp
  * \brief Tests IncrementThread class.
  * \author Juliette DRUPT
- * \date November 30th 2020
+ * \date December 1st 2020
  *
  * This program reproduces TD4a with a mutex protection
  */

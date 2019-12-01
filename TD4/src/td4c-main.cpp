@@ -1,3 +1,12 @@
+/**
+ * \file td4c-main.cpp
+ * \brief Semaphore class.
+ * \author Juliette DRUPT
+ * \date December 1st 2020
+ *
+ * This program tests Semaphore class using threads that produce and consume tokens
+ */
+
 #include "SemProducerThread.h"
 #include "SemConsumerThread.h"
 #include "Semaphore.h"
@@ -44,4 +53,3 @@ int main()
 
 	return 0;
 }
-

@@ -2,7 +2,7 @@
  * \file td4a-main.cpp
  * \brief Tests IncrementThread class.
  * \author Juliette DRUPT
- * \date November 30th 2020
+ * \date December 1st 2020
  *
  * This program reproduces TD2a with an object-oriented architecture
  */
