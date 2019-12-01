@@ -25,7 +25,7 @@ using namespace std;
  * \param pStop Pointer to a boolean : the function runs while its value is false but ends if it turns to true.
  * \return Number of loops that were executed by the function.
  */
-unsigned incr(unsigned int nLoops, double* pCounter, volatile bool* pStop)
+unsigned int incr(unsigned int nLoops, double* pCounter, volatile bool* pStop)
 {
 	unsigned int iLoop = 0;
 	while (iLoop < nLoops && not *pStop)

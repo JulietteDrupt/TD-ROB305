@@ -34,7 +34,7 @@ int main()
 	CpuLoop cpulB = CpuLoop(calib);
 	CpuLoop cpulC = CpuLoop(calib);
 
-	Mutex mutex = Mutex(false);
+	Mutex mutex = Mutex(true);
 	ThreadWithCpuLoop A = ThreadWithCpuLoop(mutex, cpulA, 40, 60, 30, 10, 10);
 	ThreadWithCpuLoop B = ThreadWithCpuLoop(mutex, cpulB, 10, 70, 30);
 	ThreadWithCpuLoop C = ThreadWithCpuLoop(mutex, cpulC, 50, 110, 0, 20, 20);
