@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-				cout << "Uncorrect number of arguments. 2 expected." << endl;
+		cout << "Uncorrect number of arguments. 2 expected." << endl;
 	}
 
 	return 0;

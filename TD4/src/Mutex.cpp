@@ -5,7 +5,7 @@
  */
 
 #include "Mutex.h"
-#include "../TimeSpec.h"
+#include "TimeSpec.h"
 #include <pthread.h>
 
 Mutex::Mutex()

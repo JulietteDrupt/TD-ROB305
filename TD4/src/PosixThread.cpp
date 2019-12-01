@@ -14,8 +14,6 @@ using namespace std;
 
 PosixThread::PosixThread()
 {
-	cout << "Creating PosixThread" << endl;
-
 	// Initialize Posix attribute
 	pthread_attr_init(&(this -> posixAttr));
 	pthread_attr_setinheritsched(&(this -> posixAttr), PTHREAD_EXPLICIT_SCHED);
@@ -27,8 +25,6 @@ PosixThread::PosixThread(pthread_t posixId)
 {
 	if (posixId != '\0')
 	{
-		cout << "Creating PosixThread" << endl;
-
 		sched_param schedParams;
 		int p_schedPolicy = SCHED_RR;
 		int test = (pthread_getschedparam(this -> posixId, &p_schedPolicy, &schedParams) == 0);
@@ -40,14 +36,13 @@ PosixThread::PosixThread(pthread_t posixId)
 	}
 	else
 	{
-		throw(Exception("pb"));
+		throw(Exception("Thread does not exist"));
 	}
 }
 
 
 PosixThread::~PosixThread()
 {
-	cout << "Destructing PosixThread" << endl;
 	pthread_attr_destroy(&(this -> posixAttr));
 }
 

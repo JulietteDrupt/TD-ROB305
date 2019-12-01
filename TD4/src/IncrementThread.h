@@ -24,7 +24,7 @@ class IncrementThread : public Thread
 	 *
 	 *  Creates IncrementThread.
 	 *
-	 *  \param data : value to set to data attribute
+	 *  \param data : pointer to Data structure
 	 */
 		IncrementThread(Data* data);
 		/*!
