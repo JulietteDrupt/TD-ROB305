@@ -116,3 +116,49 @@ Avec la toolchain pour exécuter sur la Raspberry PI, une fois l'environnement s
 $ cd TD3
 $ $CXX -Wall -Wextra -Wno-psabi src/td3c-main.cpp src/TimeSpec.cpp src/Calibrator.cpp src/PeriodicTimer.cpp src/Timer.cpp src/Looper.cpp src/CpuLoop.cpp -o td3c -lrt -lpthread
 ```
+## TD4
+### TD3-a
+Sur PC :
+```sh
+$ cd TD4
+$ g++ -Wall -Wextra src/td4a-main.cpp src/TimeSpec.cpp src/PosixThread.cpp src/Thread.cpp src/IncrementThread.cpp -o td4a -lrt -lpthread
+```
+Avec la toolchain pour exécuter sur la Raspberry PI, une fois l'environnement sourcé :
+```sh
+$ cd TD4
+$ $CXX -Wall -Wextra src/td4a-main.cpp src/TimeSpec.cpp src/PosixThread.cpp src/Thread.cpp src/IncrementThread.cpp -o td4a -lrt -lpthread
+```
+### TD4-b
+Sur PC :
+```sh
+$ cd TD4
+$ g++ -Wall -Wextra src/td4b-main.cpp src/TimeSpec.cpp src/PosixThread.cpp src/Thread.cpp src/IncrementThread.cpp src/IncrementThreadWithMutex.cpp  src/Mutex.cpp -o td4b -lrt -lpthread
+
+```
+Avec la toolchain pour exécuter sur la Raspberry PI, une fois l'environnement sourcé :
+```sh
+$ cd TD4
+$ $CXX -Wall -Wextra src/td4b-main.cpp src/TimeSpec.cpp src/PosixThread.cpp src/Thread.cpp src/IncrementThread.cpp src/IncrementThreadWithMutex.cpp  src/Mutex.cpp -o td4b -lrt -lpthread
+```
+### TD4-c
+Sur PC :
+```sh
+$ cd TD4
+$ g++ -Wall -Wextra src/td4c-main.cpp src/TimeSpec.cpp src/PosixThread.cpp src/Thread.cpp src/SemConsumerThread.cpp src/SemProducerThread.cpp src/Mutex.cpp src/Semaphore.cpp -o td4c -lrt -lpthread
+```
+Avec la toolchain pour exécuter sur la Raspberry PI, une fois l'environnement sourcé :
+```sh
+$ cd TD4
+$ $CXX -Wall -Wextra src/td4c-main.cpp src/TimeSpec.cpp src/PosixThread.cpp src/Thread.cpp src/SemConsumerThread.cpp src/SemProducerThread.cpp src/Mutex.cpp src/Semaphore.cpp -o td4c -lrt -lpthread
+```
+### TD4-d
+Sur PC :
+```sh
+$ cd TD4
+$ g++ -Wall -Wextra src/td4d-main.cpp src/TimeSpec.cpp src/PosixThread.cpp src/Thread.cpp src/FifoConsumerThread.cpp src/FifoProducerThread.cpp src/Mutex.cpp -o td4d -lrt -lpthread
+```
+Avec la toolchain pour exécuter sur la Raspberry PI, une fois l'environnement sourcé :
+```sh
+$ cd TD4
+$ $CXX -Wall -Wextra src/td4d-main.cpp src/TimeSpec.cpp src/PosixThread.cpp src/Thread.cpp src/FifoConsumerThread.cpp src/FifoProducerThread.cpp src/Mutex.cpp -o td4d -lrt -lpthread
+```
