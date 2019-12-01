@@ -79,6 +79,40 @@ $ g++ -Wall -Wextra src/td2c-main.cpp src/TimeSpec.cpp -o td2c -lrt -lpthread
 ```
 Avec la toolchain pour exécuter sur la Raspberry PI, une fois l'environnement sourcé :
 ```sh
-$ cd TD1
+$ cd TD2
 $ $CXX -Wall -Wextra src/td2c-main.cpp src/TimeSpec.cpp -o td2c -lrt -lpthread
+```
+## TD3
+### TD3-a
+Sur PC :
+```sh
+$ cd TD3
+$ g++ -Wall -Wextra src/td3a-main.cpp src/TimeSpec.cpp src/Chrono.cpp -o td3a -lrt -lpthread
+```
+Avec la toolchain pour exécuter sur la Raspberry PI, une fois l'environnement sourcé :
+```sh
+$ cd TD3
+$ $CXX -Wall -Wextra src/td3a-main.cpp src/TimeSpec.cpp src/Chrono.cpp -o td3a -lrt -lpthread
+```
+### TD3-b
+Sur PC :
+```sh
+$ cd TD3
+$ g++ -Wall -Wextra src/td3b-main.cpp src/TimeSpec.cpp src/CountDown.cpp src/PeriodicTimer.cpp src/Timer.cpp -o td3b -lrt -lpthread
+```
+Avec la toolchain pour exécuter sur la Raspberry PI, une fois l'environnement sourcé :
+```sh
+$ cd TD3
+$ $CXX -Wall -Wextra src/td3b-main.cpp src/TimeSpec.cpp src/CountDown.cpp src/PeriodicTimer.cpp src/Timer.cpp -o td3b -lrt -lpthread
+```
+### TD3-c
+Sur PC :
+```sh
+$ cd TD3
+$ g++ -Wall -Wextra src/td3c-main.cpp src/TimeSpec.cpp src/Calibrator.cpp src/PeriodicTimer.cpp src/Timer.cpp src/Looper.cpp src/CpuLoop.cpp -o td3c -lrt -lpthread
+```
+Avec la toolchain pour exécuter sur la Raspberry PI, une fois l'environnement sourcé :
+```sh
+$ cd TD3
+$ $CXX -Wall -Wextra -Wno-psabi src/td3c-main.cpp src/TimeSpec.cpp src/Calibrator.cpp src/PeriodicTimer.cpp src/Timer.cpp src/Looper.cpp src/CpuLoop.cpp -o td3c -lrt -lpthread
 ```
